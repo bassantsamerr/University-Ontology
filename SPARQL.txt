@@ -1,0 +1,42 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX uri:<http://www.semanticweb.org/acer/ontologies/2022/11/untitled-ontology-16#>
+
+1. Get all TAs belonging to a department.
+
+SELECT ?anyTA  ?dep
+	WHERE { 
+?anyTA uri:isAssignedTo ?dep.
+?dep uri:departmentName "CS"
+}
+
+2. Get the courses a student is currently studying.
+SELECT ?course  
+	WHERE { 
+?student uri:study ?course.
+?student uri:personName "bassant"
+}
+
+3. Get all the courses offered by a certain faculty.
+SELECT ?course 
+	WHERE { 
+?faculty uri:offerCourses ?course.
+?faculty uri:facultyName "ComputersandArtificialIntelligence"
+}
+
+4. Get Lecturers of a faculty.
+SELECT ?lecturer 
+	WHERE { 
+?faculty uri:consistsLecturers ?lecturer.
+?faculty uri:facultyName "ComputersandArtificialIntelligence"
+}
+
+5. Get all faculties of a university.
+SELECT ?faculty 
+	WHERE { 
+?uni uri:consistsFaculties ?faculty.
+?uni uri:universityName "cairo"
+}
+
